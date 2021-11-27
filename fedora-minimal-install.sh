@@ -48,6 +48,7 @@ echo "Restart=always" >> /etc/systemd/system/enablegdmfix.service
 echo "" >> /etc/systemd/system/enablegdmfix.service
 echo "[Install]" >> /etc/systemd/system/enablegdmfix.service
 echo "WantedBy=multi-user.target" >> /etc/systemd/system/enablegdmfix.service
+systemctl enable enablegdmfix.service
 
 ##flatpak support
 if [ $flathub = "1" ]
