@@ -1,6 +1,9 @@
 # Fedora-Minimal-Desktop
 A script that automatically install a basic gnome dekstop with only nessecary things
 
+#What's in ?
+Fedora base, Gnome-Shell, GDM, Firefox, Nautilus, Gnome-Terminal, Gnome-Software, some base font
+
 #How to use ?
 Download fedora server netinstall iso : https://getfedora.org/fr/server/download/
 boot and do all your partitions language and so...
