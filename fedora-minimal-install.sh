@@ -11,13 +11,13 @@ fi
 
 echo "Would you like to optimize DNF with fastestmirror and max_parallel_download ?"
 echo "(Downloading rpms will be faster)"
-echo "1 = yes 0 = no (default : yes)"
+echo "1 = yes 0 = no"
 opti=1
 read opti
 
 echo "Would you like to enable flathub repo?"
 echo "(More apps are avalible on flathub)"
-echo "1 = yes 0 = no (default : yes)"
+echo "1 = yes 0 = no"
 flathub=1
 read flathub
 
