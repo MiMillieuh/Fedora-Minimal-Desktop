@@ -35,6 +35,7 @@ fi
 ##Installing core apps
 dnf install gnome-shell gdm gnome-terminal firefox nautilus gnome-software gnome-tweaks chrome-gnome-shell gdouros-symbola-fonts wget liberation-sans-fonts liberation-fonts liberation-serif-fonts liberation-narrow-fonts liberation-mono-fonts liberation-fonts-common -y
 ##enableing GDMfix
+rm -rf /etc/systemd/system/enablegdmfix.service
 systemctl disable gdm.service
 touch /etc/systemd/system/enablegdmfix.service
 echo "[Unit]" >> /etc/systemd/system/enablegdmfix.service
