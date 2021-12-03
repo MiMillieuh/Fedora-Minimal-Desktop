@@ -21,6 +21,23 @@ echo "1 = yes 0 = no"
 flathub=1
 read flathub
 
+echo "Would you like to enable nvidia proprietary driver?"
+echo "NVIDIA GPU ONLY GTX600+"
+echo "1 = yes 0 = no"
+nvidia=1
+read nvidia
+
+
+##Nvidia
+if [ $nvidia = "1" ]
+then
+	dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm 
+	dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+	dnf install akmod-nvidia
+else
+	echo ""
+fi
+
 
 ##Download optimisations
 if [ $opti = "1" ]
