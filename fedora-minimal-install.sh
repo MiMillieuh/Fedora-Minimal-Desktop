@@ -33,7 +33,9 @@ if [ $nvidia = "1" ]
 then
 	dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm -y
 	dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
-	dnf install akmod-nvidia -y
+	sudo echo "blacklist nouveau" >> /etc/modprobe.d/blacklist.conf
+	sudo dnf install xorg-x11-drv-nvidia xorg-x11-drv-nvidia-libs akmod-nvidia kmod-nvidia --allowerasing -y
+	sudo dnf remove xorg-x11-drv-nouveau
 else
 	echo ""
 fi
