@@ -24,7 +24,7 @@ read flathub
 echo "Would you like to enable nvidia proprietary driver?"
 echo "NVIDIA GPU ONLY GTX600+"
 echo "1 = yes 0 = no"
-nvidia=1
+nvidia=0
 read nvidia
 
 
@@ -78,4 +78,18 @@ then
 else
 	echo ""
 fi
-reboot
+
+##reboot prompt
+echo "Would you like to restart your system now ?"
+echo "If no you can use your system in CLI until you reboot."
+echo "1 = yes 0 = no"
+restart=1
+read restart
+if [ $restart = "1" ]
+then
+	reboot
+else
+	echo "You can restart using the reboot command"
+	echo "(reboot) or (systemctl reboot)"
+fi
+
