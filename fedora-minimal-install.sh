@@ -91,6 +91,7 @@ if [ $xanmod = "1" ]
 then
 	dnf copr enable rmnscnce/kernel-xanmod -y
 	dnf install kernel-xanmod-edge kernel-xanmod-edge-headers -y
+	echo 'exclude=kernel' >> /etc/dnf/dnf.conf
 else
 	echo ""
 fi
