@@ -27,6 +27,12 @@ echo "1 = yes 0 = no"
 nvidia=0
 read nvidia
 
+echo "Would you like to use XanMod Kernel ?"
+echo "A custom kernel with F-Sync and other optimisations"
+echo "1 = yes 0 = no"
+xanmod=1
+read xanmod
+
 
 ##Nvidia
 if [ $nvidia = "1" ]
@@ -52,7 +58,8 @@ fi
 
 
 ##Installing core apps
-dnf install gnome-shell gdm gnome-terminal firefox nautilus gnome-software gnome-tweaks chrome-gnome-shell gdouros-symbola-fonts wget liberation-sans-fonts liberation-fonts liberation-serif-fonts liberation-narrow-fonts liberation-mono-fonts liberation-fonts-common -y
+sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
+dnf install gnome-shell gdm gnome-terminal firefox nautilus gnome-software gnome-tweaks chrome-gnome-shell gdouros-symbola-fonts wget liberation-sans-fonts liberation-fonts liberation-serif-fonts liberation-narrow-fonts liberation-mono-fonts liberation-fonts-common google-noto-cjk-fonts google-noto-cjk-fonts-common google-noto-cjk-fonts-common -y
 ##enableing GDMfix
 rm -rf /etc/systemd/system/enablegdmfix.service
 systemctl disable gdm.service
@@ -75,6 +82,15 @@ if [ $flathub = "1" ]
 then
 	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 	flatpak remote-add flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo 
+else
+	echo ""
+fi
+
+##Xanmod
+if [ $xanmod = "1" ]
+then
+	dnf copr enable rmnscnce/kernel-xanmod -y
+	dnf install kernel-xanmod-edge kernel-xanmod-edge-headers -y
 else
 	echo ""
 fi
