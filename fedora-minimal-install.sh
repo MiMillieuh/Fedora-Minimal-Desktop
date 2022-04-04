@@ -59,23 +59,19 @@ fi
 
 ##Installing core apps
 sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
-dnf install gnome-shell gdm gnome-terminal firefox nautilus gnome-software gnome-tweaks chrome-gnome-shell gdouros-symbola-fonts wget liberation-sans-fonts liberation-fonts liberation-serif-fonts liberation-narrow-fonts liberation-mono-fonts liberation-fonts-common google-noto-cjk-fonts google-noto-cjk-fonts-common google-noto-cjk-fonts-common -y
-##enableing GDMfix
-rm -rf /etc/systemd/system/enablegdmfix.service
-systemctl disable gdm.service
-touch /etc/systemd/system/enablegdmfix.service
-echo "[Unit]" >> /etc/systemd/system/enablegdmfix.service
-echo "Description=GDMfixFedora" >> /etc/systemd/system/enablegdmfix.service
-echo "" >> /etc/systemd/system/enablegdmfix.service
-echo "[Service]" >> /etc/systemd/system/enablegdmfix.service
-echo "User=root" >> /etc/systemd/system/enablegdmfix.service
-echo "WorkingDirectory=/" >> /etc/systemd/system/enablegdmfix.service
-echo "ExecStart=systemctl start gdm" >> /etc/systemd/system/enablegdmfix.service
-echo "Restart=always" >> /etc/systemd/system/enablegdmfix.service
-echo "" >> /etc/systemd/system/enablegdmfix.service
-echo "[Install]" >> /etc/systemd/system/enablegdmfix.service
-echo "WantedBy=multi-user.target" >> /etc/systemd/system/enablegdmfix.service
-systemctl enable enablegdmfix.service
+##Question for App Store
+echo "Would you like to use Gnome-software ?"
+echo "1= yes 0 = no"
+appstore=0
+read appstore
+if [ $appstore = "1" ]
+then
+	dnf install gnome-shell gdm gnome-terminal firefox nautilus gnome-calculator gnome-system-monitor file-roller gnome-software gnome-tweaks chrome-gnome-shell @development-tools gdouros-symbola-fonts wget liberation-sans-fonts liberation-fonts liberation-serif-fonts liberation-narrow-fonts liberation-mono-fonts liberation-fonts-common google-noto-cjk-fonts google-noto-cjk-fonts-common google-noto-cjk-fonts-common -y
+else
+	dnf install gnome-shell gdm gnome-terminal firefox nautilus gnome-calculator gnome-system-monitor file-roller gnome-tweaks chrome-gnome-shell @development-tools gdouros-symbola-fonts wget liberation-sans-fonts liberation-fonts liberation-serif-fonts liberation-narrow-fonts liberation-mono-fonts liberation-fonts-common google-noto-cjk-fonts google-noto-cjk-fonts-common google-noto-cjk-fonts-common -y
+fi
+##GDM Service
+systemctl enable gdm.service
 
 ##flatpak support
 if [ $flathub = "1" ]
