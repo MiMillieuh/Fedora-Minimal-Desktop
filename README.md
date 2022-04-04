@@ -1,8 +1,8 @@
 # Fedora-Minimal-Desktop
-A script that automatically install a basic gnome dekstop with only necessary things
+A script that automatically install a basic gnome desktop with only necessary things
 
 # What's in ?
-Fedora base, Gnome-Shell, GDM, Firefox, Nautilus, Gnome-Terminal, Gnome-Software, some base font
+Fedora base, Gnome-Shell, GDM, Firefox, Nautilus, Gnome-Terminal, Gnome-Software(Optional), some base font
 ![Capture d’écran du 2021-11-27 17-41-23](https://user-images.githubusercontent.com/52078885/143689647-25294e41-80e0-484e-b2fb-41d2d089a287.png)
 
 
