@@ -7,7 +7,7 @@ Fedora base, Gnome-Shell, GDM, Firefox, Nautilus, Gnome-Terminal, Gnome-Software
 
 
 # How to use ?
-Download fedora server netinstall iso : https://getfedora.org/fr/server/download/
+Download fedora server netinstall iso : https://getfedora.org/server/download/
 boot and do all your partitions language and so...
 Install these packages : 
 ![Capture d’écran du 2021-11-27 17-02-57](https://user-images.githubusercontent.com/52078885/143689539-ed02c38c-9532-4995-b228-ed0c787bf4b5.png)
