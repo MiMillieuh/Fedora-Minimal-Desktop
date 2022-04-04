@@ -100,9 +100,10 @@ restart=1
 read restart
 if [ $restart = "1" ]
 then
+	systemctl set-default graphical.target
 	reboot
 else
 	echo "You can restart using the reboot command"
-	echo "(reboot) or (systemctl reboot)"
+	echo "(reboot)"
 fi
 
