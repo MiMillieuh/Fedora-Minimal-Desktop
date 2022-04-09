@@ -71,7 +71,21 @@ else
 	dnf install gnome-shell gdm gnome-terminal firefox nautilus gnome-calculator gnome-system-monitor file-roller gnome-tweaks chrome-gnome-shell @development-tools gdouros-symbola-fonts wget liberation-sans-fonts liberation-fonts liberation-serif-fonts liberation-narrow-fonts liberation-mono-fonts liberation-fonts-common google-noto-cjk-fonts google-noto-cjk-fonts-common google-noto-cjk-fonts-common -y
 fi
 ##GDM Service
-systemctl enable gdm.service
+rm -rf /etc/systemd/system/enablegdmfix.service
+systemctl disable gdm.service
+touch /etc/systemd/system/enablegdmfix.service
+echo "[Unit]" >> /etc/systemd/system/enablegdmfix.service
+echo "Description=GDMfixFedora" >> /etc/systemd/system/enablegdmfix.service
+echo "" >> /etc/systemd/system/enablegdmfix.service
+echo "[Service]" >> /etc/systemd/system/enablegdmfix.service
+echo "User=root" >> /etc/systemd/system/enablegdmfix.service
+echo "WorkingDirectory=/" >> /etc/systemd/system/enablegdmfix.service
+echo "ExecStart=systemctl start gdm" >> /etc/systemd/system/enablegdmfix.service
+echo "Restart=always" >> /etc/systemd/system/enablegdmfix.service
+echo "" >> /etc/systemd/system/enablegdmfix.service
+echo "[Install]" >> /etc/systemd/system/enablegdmfix.service
+echo "WantedBy=multi-user.target" >> /etc/systemd/system/enablegdmfix.service
+systemctl enable enablegdmfix.service
 
 ##flatpak support
 if [ $flathub = "1" ]
@@ -100,7 +114,6 @@ restart=1
 read restart
 if [ $restart = "1" ]
 then
-	systemctl set-default graphical.target
 	reboot
 else
 	echo "You can restart using the reboot command"
